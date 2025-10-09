@@ -1,3 +1,4 @@
+let listaDeNumerosSorteados = [];
 let numSecreto = gerarNumeroAleatorio();
 let numChute = 1;
 
@@ -43,8 +44,18 @@ function botaoNovoJogo(){
 }
 
 function gerarNumeroAleatorio() {
-    return(parseInt(Math.random() * 10 +1));
+    let numeroEscolhido = parseInt(Math.random() * 10 +1);
+    if (listaDeNumerosSorteados.length >= 10){
+        listaDeNumerosSorteados = [];
+    }
+    if (listaDeNumerosSorteados.includes(numeroEscolhido)) {
+        return gerarNumeroAleatorio();
+    }else
+        listaDeNumerosSorteados.push(numeroEscolhido);
+        console.log(listaDeNumerosSorteados);
+        return numeroEscolhido;
 }
+
 
 function exibirTextonaTela(tag, texto){
     let campo = document.querySelector(tag);
